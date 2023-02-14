@@ -125,10 +125,9 @@ def handle_csv(file_name, step):
     plt.legend(["past","Prediction"],loc="upper right")
     # plt.show()
     plt.savefig('../kaar-angular/src/assets/img/plot.png')
-    
+    print("********************************************************************************************")
     return forecast_data
 
-    # print("********************************************************************************************")
     
 if __name__ == '__main__':
     app.run()
