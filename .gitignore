@@ -1,0 +1,16 @@
+# gitignore for angular, flask, and vscode
+
+# angular
+node_modules
+dist
+
+# flask
+venv
+*.pyc
+__pycache__
+.env
+
+# vscode
+.vscode
+
+kaar-flask/uploads/*.csv

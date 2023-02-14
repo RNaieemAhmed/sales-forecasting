@@ -1,0 +1,114 @@
+<router-outlet></router-outlet>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Upload</title>
+	
+	<style>
+		th {
+			margin-left: 20px;
+		}
+
+		td {
+			margin-left: 10px;
+		}
+
+		.rightside{
+			margin-right: 0;
+		}
+
+		
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+			box-sizing: border-box;
+			float: left;
+			width: 50%;
+			padding: 10px;
+			
+			/* Should be removed. Only for demonstration */
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			box-sizing: border-box;
+			content: "";
+			display: table;
+			clear: both;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<!-- <div class="main" id="middle"> -->
+	<div class="main" id="middle">
+
+		<div class="container-fluid" style="width: 100%;">
+			<div class="text-center" *ngIf="!message">
+				<h1 style="color: white;padding-left:30px;margin: 30px;">Please Enter the File and Number of Days to
+					Predict</h1>
+				<input class="form-control" placeholder="Upload" type="file" (change)="onChange($event)">
+				<input class="form-control" placeholder="Enter Number Of Days" type="text"
+					(change)="onDayChange($event)">
+				<button (click)="onUpload()" class="btn btn-success">
+					Upload
+				</button>
+			</div>
+			<div class="container-fluid  row" *ngIf="message,fig" style="width: 100%;">
+				<div class="column text">
+					<table>
+						<tr>
+							<th>
+								<h1>sl.no</h1>
+							</th>
+							<th>
+								<h1>Date</h1>
+							</th>
+							<th>
+								<h1>Prediction</h1>
+							</th>
+						</tr>
+
+						<tr *ngFor="let i of data; let j=index" [attr.data-index]="j">
+
+							<td>{{j+1}}</td>
+							<td>{{i.date}}</td>
+							<td>{{i.prediction}}</td>
+
+						</tr>
+
+					</table>
+				</div>
+				<!-- <button (click)="onPlotting()" class="btn btn-success">PLOT CHART </button> -->
+				<div class="rightside column" *ngIf="message,fig">
+
+					<img [src]="myimage" alt="plot chart" width="100%" height="350">
+					<h1 style="color: white;">for clear vision of graph please click below </h1>
+					<button (click)="onPlotting()" class="btn btn-success"> Graph </button>
+
+				</div>
+				<!-- OLD -->
+				<!-- <div *ngIf="message">
+				
+					<img [src]="myimage" alt="plot chart" width="300" height="200">
+					
+				</div> -->
+				<!-- <tr *ngFor="let i of data; let j=index" [attr.data-index]="j">
+					
+					<td >{{j+1}} - {{i.date}} | {{i.prediction}}</td>
+
+				</tr> -->
+
+				<!-- <p>{{days}}</p> -->
+				<!-- OLD -->
+			</div>
+			<div class="loading_class" *ngIf="loading">
+				<h3>Loading...</h3>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

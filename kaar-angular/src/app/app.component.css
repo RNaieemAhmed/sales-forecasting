@@ -1,0 +1,7 @@
+.content-body{
+    min-height: 100%;
+    padding: 60px 1rem;
+    /* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
+    background-color: yellow;
+    display: block;
+}
